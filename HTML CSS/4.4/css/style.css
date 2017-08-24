@@ -1,0 +1,10 @@
+h1{
+	font-size: 120px;
+	text-align: center;
+	margin-top: 50px;
+	font-family: 'Lobster';
+	letter-spacing: -2px;
+	text-transform: lowercase;
+	text-shadow: 5 10 -px #FF0000, 5 10 0px #0000FF;
+	;
+}

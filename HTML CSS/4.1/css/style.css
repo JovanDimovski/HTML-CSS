@@ -1,0 +1,13 @@
+li{
+	display: inline;
+	font-family: sans-serif;
+	padding: 10px;
+}
+li a{
+	text-decoration: none;
+	color: rgb(200,200,200)
+}
+li a:hover{
+	text-decoration: underline;
+	color: black;
+}

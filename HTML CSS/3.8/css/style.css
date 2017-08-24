@@ -1,0 +1,28 @@
+.wrap{
+	/*width: 600px;*/
+	min-width: 600px;
+	width: 80%;
+	margin: auto;
+	background-color: green;
+}
+.content{
+	background: red;
+	float: left;
+	/*width: 450px;*/
+	width: 70%;
+}
+.sidebar{
+	background-color: brown;
+	float: left;
+	width: 30%;
+}
+.sidebar ul{
+	padding-left: 0px;
+	list-style: none;
+}
+.content, .sidebar{
+	height: 600px;
+}
+footer{
+	clear:both;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			My first website
+		</title>
+		<meta charset="utf-8"/>
+		<style>
+			#emphasis{
+				color: red;
+			}
+			.emphasis{
+				color: green;
+			}
+			li:nth-child(4){
+				color:blue;	
+			}
+			ul:first-of-type li:nth-child(4){
+				color:orange;	
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li class="emphasis">
+				This
+			</li>
+			<li>
+				is
+			</li>
+			<li id="emphasis" class="emphasis">
+				my
+			</li>
+			<li>
+				list.
+			</li>
+		</ul>
+		<ul>
+			<li class="emphasis">
+				This
+			</li>
+			<li>
+				is
+			</li>
+			<li id="emphasis" class="emphasis">
+				my
+			</li>
+			<li>
+				list.
+			</li>
+		</ul>
+	</body>
+</html>
