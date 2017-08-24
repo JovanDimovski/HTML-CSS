@@ -1,31 +1,12 @@
-/* .container_12{
-	background-color: red;
+.banner{
+	background: url(../img/banner.jpg) no-repeat;
+	width: 695px;
+	height: 231px;
 }
-nav li {
-	display: inline;margin-left: 0; margin-right: 30px;
-}
-aside{
-	background: green;
-}
-.primary
-{
-	background-color: #bbbbbb;
-}
-header
-{
-	background: yellow;
-	overflow: hidden;
-}
-.main
-{
-	margin: 30px 0;
-}
+header h1{
+	background: url(../img/black+white.png)no-repeat;
+	text-indent: -9000px;
+	width: 175px;
+	height:25px;
 
-nav{background: orange;}
-
-section{
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	padding:15px;
-} */
+}

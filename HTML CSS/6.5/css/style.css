@@ -1,0 +1,150 @@
+.banner{
+	background: url(../img/banner.jpg) no-repeat;
+	width: 695px;
+	height: 231px;
+	display: block;
+	margin-left:-19px;
+	margin-top:20px;
+	position: relative;
+}
+.banner h2{
+	color:white;
+	font-size: 26px;
+	width: 400px;
+	font-weight: normal;
+	position: absolute;
+	bottom:0;
+	left:20px;
+	background:rgba(0,0,0,0.2);
+}
+.callout{
+	background: black;
+	height: 231px;
+	margin-top:20px;
+}
+header{
+overflow: hidden;
+}
+header h1{
+	text-indent: -9000px;
+	margin: 10px 10px 22px;
+	float: left;
+}
+header h1:after{
+	clear:both;
+	display:block;
+	content:' ';
+	visibility: hidden;
+}
+
+header h1 a{
+	background: url(../img/black+white.png)no-repeat;
+	width: 175px;
+	height:25px;
+	float: left;
+}
+nav{
+	float:right;
+	padding-top:12px;
+}
+nav li{
+	display: inline;
+	float: left;
+}
+
+
+.main{
+	margin-top: 20px;
+}
+
+footer{
+	clear: both;
+	border-top:1px solid #d1d1d1;
+	padding-top: 18px;
+}
+.container_24{
+	margin-top: 10px;
+}
+blockquote,blockquote p{
+	font-size: 15px;
+	line-height: 20px;
+	font-style: italic;
+}
+p{
+	font-size:13px;
+	line-height: 20px;
+	color: #353535;
+}
+h1,h3{
+	letter-spacing: -1px;
+}
+h3{
+	font-size: 26px;
+	text-transform: lowercase;
+	border-bottom: 1px solid #d1d1d1;
+	padding-bottom: 20px;
+	margin-bottom: 15px;
+	line-height:1em;
+}
+a{
+	color: #7e7e7e;
+}
+a:hover, .selected{
+	color: black;
+}
+
+nav a{
+	text-transform: lowercase;
+	margin-left: 24px;
+	text-decoration: none;
+}
+.button{
+	background: #242324;
+	padding: 6px;
+	text-decoration: none;
+	color: #dddddd;
+	text-transform: uppercase;
+	font-size: 8pt;
+	font-weight: bold;
+
+}
+.button:hover{
+	color: white;
+}
+blockquote{
+	position: relative;
+}
+.main blockquote p{
+	padding-left: 30px;
+}
+.main blockquote p:before,
+.main blockquote p:after{
+	font-size: 40px;
+	color: #bfbfbf;
+	font-style:italic;
+
+}
+.main blockquote p:first-child:before{
+	content: '“';
+	position: absolute;
+	top: 0;
+	left: 0;
+
+}
+.main blockquote p:last-child:after{
+	content: '”';
+	float: right;
+	position:absolute;
+	bottom: -5px;
+	right:0;
+}
+.work h2{
+	margin-top: 30px;
+}
+.work h3{
+	color: #787878;
+	margin-top:-10px;
+	font-weight: normal;
+	padding-bottom: 33px;
+	margin-bottom: 30px;
+}
