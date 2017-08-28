@@ -178,6 +178,8 @@ var outerF = function(){
 		}
 		if(string.length === 0){
 			document.getElementById("display").innerHTML = "0";
+		}else if(string.length === 1 && string == "0"){
+			string="";
 		}else{
 			document.getElementById("display").innerHTML = string;
 		}
@@ -187,3 +189,18 @@ var outerF = function(){
 
 var myFunction = outerF();
 //myFunction("b1");
+
+document.addEventListener('keydown', function(event) {
+	console.log(event.key);
+    if(event.key >= 0 && event.key <=9) {
+    	var key = event.key;
+        console.log("Key pressed: "+key);
+        myFunction("b"+key.toString())
+    }
+    if(event.key === "*") {console.log("Key pressed: *");myFunction("bmult")}
+    if(event.key === "+") {console.log("Key pressed: +");myFunction("badd")}
+    if(event.key === "-") {console.log("Key pressed: -");myFunction("bsub")}
+    if(event.key === "/") {console.log("Key pressed: /");myFunction("bdiv")}
+    if(event.key === "=") {console.log("Key pressed: =");myFunction("beq")}
+    if(event.key === "Enter") {console.log("Key pressed: =");myFunction("beq")}
+});
