@@ -1,0 +1,56 @@
+.row{
+	display: block;
+
+}
+.button{
+	border: 1px solid black;
+	display: block;
+	height: 90px;
+	background-color: rgb(245,245,245);
+	line-height: 90px;
+	text-align: center;
+	font-size: 32px;
+	font-family: Helvetica, sans-serif;
+	border: 1px solid  rgb(220,220,220);
+	border-radius: 2px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	margin-left: 11px;
+	color: #444444;
+}
+
+#beq{
+	background-color: rgb(87,151,242);
+	color: white;
+	font-size: 48px;
+}
+
+#display{
+	margin-top:5%;
+	margin-left: -2px;
+	margin-right: -5px;
+	height: 96px; 
+	line-height: 96px; 
+	font-size: 48px; 
+	text-align: right;
+	border: 1px solid rgb(170,170,170);
+	border-radius: 2px;
+	padding-right:30px;
+	box-shadow: inset 0px 0px 20px rgba(0,0,0,0.05);
+}
+
+#bmult,#bdiv,#bsub,#badd,#bCE{
+	background-color: rgb(217,217,217);
+	font-size: 48px;
+}
+#bCE{
+	font-size: 28px;
+	}
+/* .cell{
+	background-color: orange;
+
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    padding: 10px;
+} */
