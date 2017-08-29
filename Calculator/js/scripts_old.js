@@ -17,7 +17,9 @@ var outerF = function(){
 			if(string.charAt(i).match(pattern))
 				operators.push(string.charAt(i));
 		}
-		
+		//console.log(numbers);
+		//console.log(operators);
+
 		var i=0;
 		while(i<operators.length)
 		{
@@ -35,6 +37,8 @@ var outerF = function(){
 			i++;
 			}
 		}
+		//console.log(numbers);
+		//console.log(operators);
 
 		var i=0;
 		while(i<operators.length)
@@ -53,6 +57,9 @@ var outerF = function(){
 			i++;
 			}
 		}
+		//console.log(numbers);
+		//console.log(operators);
+
 		return numbers[0];
 	}
 
@@ -65,10 +72,72 @@ var outerF = function(){
 			}
 			string+=id.charAt(1);
 			console.log("ID",id);
-		}else if(id === "bdiv" || id === "bmult"||id === "bsub"||id === "badd"){
+		}
+		/*if(id === "b1"){
+			if(reset){
+				string="";
+				reset = false;
+			}
+			string+="1";
+		}else if(id === "b2"){
+			if(reset){
+				string="";
+				reset = false;
+			}
+			string+="2";
+		}else if(id === "b3"){
+			if(reset){
+				string="";
+				reset = false;
+			}
+			string+="3";
+		}else if(id === "b4"){
+			if(reset){
+				string="";
+				reset = false;
+			}
+			string+="4";
+		}else if(id === "b5"){
+			if(reset){
+				string="";
+				reset = false;
+			}
+			string+="5";
+		}else if(id === "b6"){
+			if(reset){
+				string="";
+				reset = false;
+			}
+			string+="6";
+		}else if(id === "b7"){
+			if(reset){
+				string="";
+				reset = false;
+			}
+			string+="7";
+		}else if(id === "b8"){
+			if(reset){
+				string="";
+				reset = false;
+			}
+			string+="8";
+		}else if(id === "b9"){
+			if(reset){
+				string="";
+				reset = false;
+			}
+			string+="9";
+		}else if(id === "b0"){
+			if(reset){
+				string="";
+				reset = false;
+			}
+			string+="0";
+		}*/else if(id === "bdiv" || id === "bmult"||id === "bsub"||id === "badd"){
 			reset = false;
 			if(string.charAt(string.length - 1).match("/|\\*|\\+|\\-"))
 			{
+				console.log("Works");
 				string = string.substring(0, string.length - 1);
 			}
 			if(string.length === 0)
@@ -81,18 +150,58 @@ var outerF = function(){
 				string+="-";
 			else
 				string+="+";
-
-			console.log("ID",id);
-		}else if(id === "beq"){
+		}
+		/*else if(id === "bdiv"){
+			reset = false;
 			if(string.charAt(string.length - 1).match("/|\\*|\\+|\\-"))
 			{
+				console.log("Works");
+				string = string.substring(0, string.length - 1);
+			}
+			if(string.length === 0)
+				string+="0";
+			string+="/";
+		}else if(id === "bmult"){
+			reset = false;
+			if(string.charAt(string.length - 1).match("/|\\*|\\+|\\-"))
+			{
+				console.log("Works");
+				string = string.substring(0, string.length - 1);
+			}
+			if(string.length === 0)
+				string+="0";
+			string+="*";
+		}else if(id === "bsub"){
+			reset = false;
+			if(string.charAt(string.length - 1).match("/|\\*|\\+|\\-"))
+			{
+				console.log("Works");
+				string = string.substring(0, string.length - 1);
+			}
+			if(string.length === 0)
+				string+="0";
+			string+="-";
+		}else if(id === "badd"){
+			reset = false;
+			if(string.charAt(string.length - 1).match("/|\\*|\\+|\\-"))
+			{
+				console.log("Works");
+				string = string.substring(0, string.length - 1);
+			}
+			if(string.length === 0)
+				string+="0";
+			string+="+";
+		}*/else if(id === "beq"){
+			if(string.charAt(string.length - 1).match("/|\\*|\\+|\\-"))
+			{
+				console.log("Works");
 				string = string.substring(0, string.length - 1);
 			}
 			string+="=";
 			string = calculate(string.substring(0, string.length - 1)).toString();
 			reset = true;
 			console.log("result:",string);
-			console.log("ID",id);
+
 			//document.getElementById("display").innerHTML = result;
 		}else if(id === "bCE"){
 			string = "";
