@@ -10,25 +10,28 @@ function myMove() {
     var pos = 0;
     var off = 0;
     var id;
-
-    if(settings.showControls == false){
-        document.getElementById("prev").style.display = 'none'; 
-        document.getElementById("next").style.display = 'none'; 
-    }
-    if(settings.showPosition == false){
-        document.getElementById("position").style.display = 'none'; 
-    }
     var colorPrimary = settings.colorPrimary.slice(0,-1);
     var colorSecondary = settings.colorSecondary.slice(0,-1);
-    colorPrimary = colorPrimary.slice(4);
-    colorSecondary = colorSecondary.slice(4);
-    console.log(colorPrimary);
 
-    document.getElementById("prev").setAttribute("style", "background-color: rgba("+colorSecondary+",0.2)"); 
-    document.getElementById("next").setAttribute("style", "background-color: rgba("+colorSecondary+",0.2)"); 
-    document.getElementById("arrow right").setAttribute("style", "border-color: rgba("+colorPrimary+",1)");
-    document.getElementById("arrow left").setAttribute("style", "border-color: rgba("+colorPrimary+",1)"); 
+    function parseSettings(){
+        if(settings.showControls == false){
+            document.getElementById("prev").style.display = 'none'; 
+            document.getElementById("next").style.display = 'none'; 
+        }
+        if(settings.showPosition == false){
+            document.getElementById("position").style.display = 'none'; 
+        }
+        colorPrimary = colorPrimary.slice(4);
+        colorSecondary = colorSecondary.slice(4);
+        console.log(colorPrimary);
 
+        document.getElementById("prev").setAttribute("style", "background-color: rgba("+colorSecondary+",0.2)"); 
+        document.getElementById("next").setAttribute("style", "background-color: rgba("+colorSecondary+",0.2)"); 
+        document.getElementById("arrow right").setAttribute("style", "border-color: rgba("+colorPrimary+",1)");
+        document.getElementById("arrow left").setAttribute("style", "border-color: rgba("+colorPrimary+",1)"); 
+    }
+    parseSettings();
+    
     setTimeout(forward,5000);
     function reset(func,interval){
         clearInterval(id);
