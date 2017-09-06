@@ -1,0 +1,33 @@
+.phone{
+    width: 200px;
+    height: 300px;
+    border: 2px solid #aaf;
+    border-radius: 4px;
+    float:left;
+    margin:8px;
+}
+
+.thumb{
+    max-height: 180px;
+    max-width: 160px;
+}
+.transparent{
+    opacity: 0.3;
+}
+.opaque{
+    opacity: 1;
+}
+
+.single-produc-page{
+    width: 600px;
+    height: 500px;
+    background-color: yellow;
+    float:left;
+}
+
+.hidden{
+    display:none;
+}
+.visible{
+    display:block;
+}
