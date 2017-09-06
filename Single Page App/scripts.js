@@ -68,5 +68,6 @@ $(document).ready(function(){
     $("#single-phone-page").on("click","#close",function(){
         $("#main-page").removeClass("hidden");
         $("#single-phone-page").removeClass("visible");
+        $("#single-phone-page").addClass("hidden");
     });
 });
