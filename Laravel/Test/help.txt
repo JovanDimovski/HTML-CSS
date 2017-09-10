@@ -1,0 +1,156 @@
+-blade
+-routes
+-named routes
+-moze da ima i post i get ruta so isto ime
+-na post na form se dodava csrf token  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+Vo sprotivno se javuva na laravel 5.5 (The page has expired due to inactivity.), postari verzii bi trebalo da se pojav Token mismatch exception
+- isprakjanje parametar na ruta ['ime na parametar'=>'vrednost na parametar']
+
+-   Response::view("Ime") - fasada view("Ime");
+    Response::json([''=>'']) - fasada neznam 
+    Response::redirect("Ime") - fasada redirect("Ime");  
+
+Route::post('create', function(Request $request) {//This is Request facade?? with?? dependency injection
+        return redirect()->route('admin.index');
+    });
+------------This is the prefered practice------------------
+-This is dependency injection
+function(Request $request)
+    $request->input('smth');
+-----------------------------------------------------------
+-This is using the facade
+function()
+   Request::input("smth");
+-----------------------------------------------------------
+
+CSRF Attacks
+-a csrf token is sent from server, which we send back to c
+
+
+---------------------------------------------------------
+Session::get("variable-name") - za prevzemanje na vrednost po redirect ispratena so with(izgleda ne e sesiska promenliva, ako e traj samo do preminuvawe na sledna strana)
+
+https://laravel.com/docs/5.4/redirects#redirecting-with-flashed-session-data
+
+"Sometimes you may wish to store items in the session only for the next request. You may do so using the flash method. Data stored in the session using this method will only be available during the subsequent HTTP request, and then will be deleted. Flash data is primarily useful for short-lived status messages:
+
+$request->session()->flash('status', 'Task was successful!');"
+
+------------------------------------------------------------
+RouteServiceProvider gi ??vcituva?? site kontroleri na application startup
+so registriranje na controlers namespace??
+
+------------------------------------------------------------
+php artisan make:controller NameOfController
+php artisan make:model NameOfModel -m(znamence m sluzi za da mu kazaeme da generira i migraciski fajl)
+
+php artisan make:migration name_of_table
+
+php artisan migrate izvrsi migracija(se dodavaat tabeli vo bazata)
+php artisan migrate:rollback (mislam pr. ako ja migriravme posledno samo posts odstranija)
+php artisan migrate:reset vrati gi site migracii
+php artisan migrate:refresh ekvivalentno na reset pa migrate
+------------------------------------------------------------
+Post::get() || Post:all() -site 
+Post::where('title','=','This title')->get(); -ekvivalentno na sql where
+Post::where('title','=','This title')->first(); -samo prv rezultat koj odgovara
+Post::find(10) red so id 10
+
+Pretezno vrakja laravel Collection
+..primer metodi 
+filter(), sort(), each()
+
+-Updating an entry
+
+$post = Post::where('somthing','condition','smth')->first()
+$post->title = "New title"
+$post->save()
+
+-deleting an entry
+
+Post::where('somthing','condition','smth')->first()->delete()
+Post::find($id)->delete();
+
+Post::where('somthing','condition','smth')->delete() - gi brisi site koi go ispolnuvaat uslovot
+
+-soft deleting ??? Vo agregatnite metodi reagira kako da ne postojat izbrisanite no sepak na nekoj nacin mozi da se dobijat v.dokumentacija
+
+----------------------------------------------------------------------
+Database query builder
+///????/////
+----------------------------------------------------------------------
+Database seeding
+
+php artisan make:seed PostTableSeeder se generira fajl vo database seeds
+-sledno se kreiraat vnatre vo fajlot vo slucajot nekolku posts
+-potoa se dodava vo fajlot DatabaseSeeder vo istiot folder
+
+$this->call(PostsTableSeeder::class);
+-i se izvrsuva komada
+php artisan db:seed
+----------------------------------------------------------------------
+Relationships
+in Post Model
+public function likes()
+{
+    return $this->hasMany('App\Like');
+}
+in Like Model
+public function post()
+{
+    return $this->belongsTo('App\Post');
+}
+----------------------------------------------------------------------
+Querying ome to many Relationships
+
+prevzemanje podatoci
+
+$likes = Post::find(10)->likes; //mislam vrakja kolekcija od likes na koj pristapuvame kako property
+$likes = Post::find(10)->likes()-> orderBy('Something')->get();//pristapuvame na likes kako metod na koj
+nadovrzuvame dopolnitelni baranja
+
+vmetnuvanje na novi vrski
+$post = Post::find(10);
+$like = new Like();
+$post->likes()->save($like);
+----------------------------------------------------------------------
+Lazy and eager loading
+
+Post::find($id)->with('likes');//eager load model with Relationships
+$post = Post::find($id);//we only fetch the post model and any time we need to get the likes for this particular post we execute the same query
+
+$post->likes//the same result but the same exact query is executed multiple times
+
+-----------------------------------------------------------------------
+Many to many Relationships
+
+-- in Post Model
+public function tags(){
+    return $this->belongsToMany('App\Tag');
+}
+
+-- in Tag Model
+public function posts(){
+    return $this->belongsToMany('App\Posts');
+}
+
+a pivot table is used named post_tag by Laravel
+
+Fetching data
+$tags = Post::find(10)->tags;
+$tags = Post::find(10)->tags()->orderBy("some column")->get();
+
+Inserting data
+$post = Post::find(10);
+$tagId = 1;
+$post->tags()->attach($tagId);//ataching one tag
+$post->tags()->attach(/*array of tag ids*/);//ataching multiple tags
+
+Deleting data
+$post->tags()->detach($tagId);//detach tag by id
+$post->tags()->detach();//detach all tags curently attached to this post
+--------------------------------------------------------
+Mutators and accessors
+
+Mutators change input data before adding to database
+Accessors modifies data when fetching data from db
