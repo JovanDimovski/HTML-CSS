@@ -128,7 +128,7 @@ Route::get('post/{id}/like', [
 //     })->name("admin.create.post");
 // });
 
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
     Route::get('',[
         'uses'=>'PostController@getAdminIndex',
         'as'=>'admin.index'
@@ -146,17 +146,20 @@ Route::group(['prefix'=>'admin'],function(){
     
     Route::get('edit/{id}',[
         'uses'=>'PostController@getAdminEdit',
-        'as'=>'admin.edit'
+        'as'=>'admin.edit',
+        'middleware'=>'atho'
     ]);
 
     Route::post('edit',[
         'uses'=>'PostController@postAdminUpdate',
-        'as'=>'admin.update'
+        'as'=>'admin.update',
+        'middleware'=>'atho'
     ]);
 
     Route::get('delete/{id}',[
         'uses'=>'PostController@getAdminDelete',
-        'as'=>'admin.delete2'
+        'as'=>'admin.delete2',
+        'middleware'=>'atho'
     ]);
 
 });
