@@ -164,3 +164,7 @@ Route::group(['prefix'=>'admin'],function(){
 Route::get('about', function () {
     return view('other.about');
 })->name("about");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -154,3 +154,76 @@ Mutators and accessors
 
 Mutators change input data before adding to database
 Accessors modifies data when fetching data from db
+
+---------------------------------------------------------
+Authentication 
+
+vo config/auth.php
+
+web or api (token aproach)
+default is web
+
+php artisan make:auth
+Generates sign up sign in and pasword reset functionality, adds required routes, adds main layout and homepage
+(najdobro e da sa upotrebi vedas po kreirawe a nov preoekt)
+
+$this->middleware('auth'); vo konstruktor na kontroler kazuva deka za pristap na bilo koj od metodite na toj kontroler treba korisnkoot da e aftenticiran
+
+----------------------------------------------------------
+Manual Authentication
+//atemt to authenticate user
+Auth::attempt(['email'=>$email, 'password'=>$password])//bi trebalo da se postavuva nekakov parametar za sporedba so password hash
+
+Auth::check()//Check if the active user is authenticated
+Auth::user()//get authenticated user
+Auth::logout()// clear authentication state, delete session,  delete id from cookie and logout
+-------------------------------------------------------------
+Pametenje na korisnik
+-na korisnicka strana ima remember_me kolace, a na serverska strana remember_me token, i dvete hesirani
+(hesot na dvete e razlicen no hesiranata vrednost e ista)
+
+--------------------------------------------------------------
+Middleware
+-way of manipultaing requests (and response)
+
+in Middleware folder
+
+class AlwaysRedirect{
+    if(true){
+        return redirect('home');
+    }
+}
+
+-we register the middleware in app/http/kernel.php
+protected $middleware=[...,
+\MiddlewareAlwaysRedirect::class
+]
+
+php artisan make:middleware AlwaysRedirect 
+(If we add this middleware to the $middleware array becouse in this particular example we redirect every request to home including requests for route home, we get an error ---too many redirects )
+we need a check in the middleware, to make sure the request isnt for home, or we only redirect requests to a particular rote or group of routes
+-there is a built in authentication middleware: 'auth'
+
+-return $next($request) - isprati barawe na sleden sloj dokolku go pomini tekovniot
+
+Dodavanje na middleware na ruta ex.
+
+    Route::get('delete/{id}',[
+        'uses'=>'PostController@getAdminDelete',
+        'as'=>'admin.delete2'
+        'middleware'=>'auth'
+    ]);
+
+Dodavanje na grupa ruti
+    Route::group(['prefix'=>'admin','middleware','auth',function(){
+        ili dodavawe povekje sloevi istovremeno
+    Route::group(['prefix'=>'admin','middleware',['auth','nekoj_drug'],function(){
+        .
+        .
+        .
+
+        
+        .
+        .
+    }
+-------------------------------------------------------------------

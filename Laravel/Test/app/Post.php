@@ -26,7 +26,9 @@ class Post extends \Eloquent
         return \strtoupper($value);
     }
 
-
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 
 
 //     public function getPosts($session)
